@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://resources/main/Scoreboard.gd" type="Script" id=1]
+[ext_resource path="res://assets/img/scoreboard/background.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/scoreboard_list_titles.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/arab3end.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/img/menu/arrow_back_black.png" type="Texture" id=5]
+[ext_resource path="res://resources/scoreboard/back_button.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 200
+font_data = ExtResource( 4 )
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 2958.0
+size_flags_vertical = 3
+script = ExtResource( 1 )
+
+[node name="background" type="Sprite" parent="."]
+position = Vector2( 640.283, 360.907 )
+scale = Vector2( 0.811314, 0.889797 )
+texture = ExtResource( 2 )
+
+[node name="Container" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.0
+margin_top = 4.0
+margin_right = -2.0
+margin_bottom = 732.0
+size_flags_vertical = 3
+
+[node name="ScoreList Title" type="GridContainer" parent="Container"]
+editor/display_folded = true
+margin_left = 14.0
+margin_top = 244.0
+margin_right = 1278.0
+margin_bottom = 294.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+columns = 3
+
+[node name="Name" type="Label" parent="Container/ScoreList Title"]
+margin_right = 418.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Name"
+align = 1
+
+[node name="Position" type="Label" parent="Container/ScoreList Title"]
+margin_left = 422.0
+margin_right = 840.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Position"
+align = 1
+
+[node name="Time" type="Label" parent="Container/ScoreList Title"]
+margin_left = 844.0
+margin_right = 1262.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Elapsed Time"
+align = 1
+
+[node name="Title" type="Label" parent="Container"]
+margin_left = 16.0
+margin_top = 50.0
+margin_right = 1280.0
+margin_bottom = 247.0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ScoreBoard"
+align = 1
+
+[node name="ScoreBoard" type="ScrollContainer" parent="Container"]
+margin_left = 14.0
+margin_top = 319.0
+margin_right = 1278.0
+margin_bottom = 581.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 11
+scroll_horizontal_enabled = false
+
+[node name="ScoreList" type="VBoxContainer" parent="Container/ScoreBoard"]
+margin_right = 1264.0
+margin_bottom = 262.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Container"]
+margin_left = 8.64563
+margin_top = 566.024
+margin_right = 164.646
+margin_bottom = 716.024
+size_flags_horizontal = 0
+size_flags_vertical = 0
+button_mask = 7
+icon = ExtResource( 5 )
+flat = true
+script = ExtResource( 6 )
+scene_to_load = "res://resources/main/NewGame.tscn"
+
+[connection signal="pressed" from="Container/Button" to="Container/Button" method="_on_Button_pressed"]
